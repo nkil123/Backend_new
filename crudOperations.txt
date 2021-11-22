@@ -1,0 +1,96 @@
+ 
+db.users.insert({        
+...     "first_name": "Barbabas",
+...     "last_name": "Harbard",
+...     "email": "bharbard7@marriott.com",
+...     "gender": "Male",
+...     "ip_address": "114.83.122.243",
+...     "age": 82
+...   })
+db.users.insertMany([
+...   {
+...     "first_name": "Gerhard",
+...     "last_name": "Copley",
+...     "email": "gcopley1@liveinternet.ru",
+...     "gender": "Male",
+...     "ip_address": "52.189.52.171",
+...     "age": 62
+...   },
+...   {
+...     "first_name": "Kurtis",
+...     "last_name": "Angier", 
+...     "email": "kangier2@facebook.com",
+...     "gender": "Female",
+...     "ip_address": "54.27.30.92",
+...     "age": 16
+...   },
+...   {
+...     "first_name": "Farlay",
+...     "last_name": "Caldera",        
+...     "email": "fcaldera3@amazon.de",
+...     "gender": "Bigender", 
+...     "ip_address": "251.89.21.125",
+...     "age": 98
+...   },
+...   {
+...     "first_name": "Livia",
+...     "last_name": "Haslock(e)",
+...     "email": "lhaslocke4@smugmug.com",
+...     "gender": "Genderfluid",
+...     "ip_address": "150.124.120.33",
+...     "age": 51
+...   },
+...   {
+...     "first_name": "Simone",
+...     "last_name": "Dunn",
+...     "email": "sdunn5@bloglovin.com",
+...     "gender": "Genderfluid",
+...     "ip_address": "88.119.187.88",
+...     "age": 40
+...   },
+...   {
+...     "first_name": "Torin",
+...     "last_name": "Hallas",
+...     "email": "thallas6@amazonaws.com",
+...     "gender": "Non-binary",
+...     "ip_address": "226.114.251.255",
+...     "age": 38
+...   },
+...   {
+...     "first_name": "Barbabas",
+...     "last_name": "Harbard",
+...     "email": "bharbard7@marriott.com",
+...     "gender": "Male",
+...     "ip_address": "114.83.122.243",
+...     "age": 82
+...   },
+...   {
+...     "first_name": "Tadeo",
+...     "last_name": "Androli",
+...     "email": "tandroli8@marriott.com",
+...     "gender": "Polygender",
+...     "ip_address": "23.71.191.105",
+...     "age": 45
+...   }
+... ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("619bb5fd7cad15380337a130"),
+                ObjectId("619bb5fd7cad15380337a131"),
+                ObjectId("619bb5fd7cad15380337a132"),
+                ObjectId("619bb5fd7cad15380337a133"),
+                ObjectId("619bb5fd7cad15380337a134"),
+                ObjectId("619bb5fd7cad15380337a135"),
+                ObjectId("619bb5fd7cad15380337a136"),
+                ObjectId("619bb5fd7cad15380337a137")
+        ]
+}
+db.users.findOne({"ip_address": "226.114.251.255"}) 
+db.users.find()
+db.users.update({ "_id" : ObjectId("619bb5fd7cad15380337a133")},{$set:{first_name:"dddd"}})  
+
+db.users.updateMany({gender:"Male"},{$set:{gender:"gay"}})
+db.users.remove({"_id" : ObjectId("619bb5fd7cad15380337a136")})
+db.users.deleteOne({"_id" :ObjectId("619bb5fd7cad15380337a137")})
+db.users.deleteMany({"gender": "Non-binary"})
