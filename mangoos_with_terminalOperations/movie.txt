@@ -1,0 +1,27 @@
+> db.movies.find({"movie_name":{$eq:"Alabama Moon"}},{movie_name:1,"production_year ":1,"_id":0}).pretty()
+
+>db.movies.find({"movie_name":{$not:{$eq:"Alabama Moon"}}},{movie_name:1,"production_year":1,"_id":0}).pretty()
+
+> db.movies.find({"budget":{$gte:19106}},{movie_name:1,"production_year":1,"_id":0}).pretty().count()
+
+> db.movies.find({"budget ":{$gt:19106}},{movie_name:1,"production_year ":1,"_id":0}).pretty()
+
+> db.movies.find({"budget ":{$lt:19106}},{movie_name:1,"production_year ":1,"_id":0}).pretty()
+
+> db.movies.find({"budget ":{$lte:19106}},{movie_name:1,"production_year ":1,"_id":0}).pretty()
+
+>db.movies.find({$and:[{"production_year":{$gt:2000}},{"budget":{$gt:10000}}]},{movie_name:1,production_year:1}).pretty()
+
+>db.movies.find({$or:[{"production_year":{$gt:2000}},{"budget":{$gt:10000}}]},{movie_name:1,production_year:1}).pretty()
+
+> db.movies.find({$nor:[{"production_year":{$gt:2000}},{"budget":{$gt:10000}}]},{movie_name:1,production_year:1}).pretty()
+
+> db.movies.find({$or:[{"production_year":{$not:{$eq:2000}}},{"budget":{$not:{$eq:10000}}}]},{movie_name:1,production_year:1}).pretty()
+
+>db.movies.find({production_year:{$in:[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]}},{movie_name:1,production_year:1}).pretty()
+
+> db.movies.find().sort({production_year:-1,movie_name:-1}).pretty()
+
+> db.movies.find().sort({production_year:-1,movie_name:-1}).limit(10).skip(5).pretty()
+
+>db.movies.find({}).sort({budget:-1}).limit(10).forEach(el=>{db.movies.update({_id:el._id},{$unset:{movie_genre:""}})}).pretty() 
