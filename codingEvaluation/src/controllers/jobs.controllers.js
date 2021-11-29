@@ -91,7 +91,6 @@ router.get ('/notice/*/:number', async (req, res) => {
 });
 
 //find all jobs by sorting the jobs as per their rating.
-// i have passed rating as number on adding 1 we gett in increasing order while -1 gives us decreasing order
 
 router.get ('/*/sort/:rating', async (req, res) => {
   console.log ('rating');

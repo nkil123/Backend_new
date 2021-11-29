@@ -23,5 +23,27 @@ router.get ('', async (req, res) => {
     return res.status (500).send ({message: e.message, status: 'Failed'});
   }
 });
+router.patch ('/:id', async (req, res) => {
+  try {
+    const company = await Company.findByIdAndUpdate (req.params.id)
+      .lean ()
+      .exec ();
 
+    return res.status (201).send (company);
+  } catch (e) {
+    return res.status (500).send ({message: e.message, status: 'Failed'});
+  }
+});
+
+router.delete ('/:id', async (req, res) => {
+  try {
+    const company = await Company.findByIdAndDelete (req.params.id)
+      .lean ()
+      .exec ();
+
+    return res.status (201).send (company);
+  } catch (e) {
+    return res.status (500).send ({message: e.message, status: 'Failed'});
+  }
+});
 module.exports = router;
