@@ -19,17 +19,19 @@ router.post ('/', async (req, res) => {
       `<p>Hi ${user.first_name}, Please confirm your email address</p>`
     );
 
-    console.log (admins);
+    let arr = [];
 
     admins.forEach (async admin => {
-      sendMail (
-        `admins@ad.com`,
-        `${admin.email}`,
-        `${user.first_name} ${user.last_name} has registered with us`,
-        `Please welcome ${user.first_name} ${user.last_name}`,
-        `Please welcome ${user.first_name} ${user.last_name}`
-      );
+      arr.push (admin.email);
     });
+
+    sendMail (
+      `admins@ad.com`,
+      arr,
+      `${user.first_name} ${user.last_name} has registered with us`,
+      `Please welcome ${user.first_name} ${user.last_name}`,
+      `Please welcome ${user.first_name} ${user.last_name}`
+    );
 
     return res.status (201).send (user);
   } catch (e) {
